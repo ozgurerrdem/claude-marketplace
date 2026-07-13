@@ -1,0 +1,91 @@
+{
+  "name": "ozgur-marketplace",
+  "owner": {
+    "name": "Ozgur Dagdeviren"
+  },
+  "plugins": [
+    {
+      "name": "andrej-karpathy-skills",
+      "displayName": "Karpathy Guidelines",
+      "description": "LLM kodlama hatalarini azaltan davranissal kurallar (Think Before Coding, Simplicity First, Surgical Changes).",
+      "author": {
+        "name": "forrestchang"
+      },
+      "category": "workflow",
+      "homepage": "https://github.com/multica-ai/andrej-karpathy-skills",
+      "source": {
+        "source": "github",
+        "repo": "multica-ai/andrej-karpathy-skills",
+        "ref": "main"
+      }
+    },
+    {
+      "name": "context-mode",
+      "displayName": "Context Mode",
+      "description": "Context penceresini koruyan MCP plugin: sandbox kod calistirma, FTS5 bilgi tabani, intent bazli arama.",
+      "author": {
+        "name": "Mert Koseoglu"
+      },
+      "category": "development",
+      "homepage": "https://github.com/mksglu/context-mode",
+      "source": {
+        "source": "github",
+        "repo": "mksglu/context-mode",
+        "ref": "main"
+      }
+    },
+    {
+      "name": "rtk-skills",
+      "displayName": "RTK Skills",
+      "description": "RTK deposundaki skill seti: pr-review, issue-triage, tdd, performance, security-guardian, ship.",
+      "author": {
+        "name": "rtk-ai"
+      },
+      "category": "development",
+      "homepage": "https://github.com/rtk-ai/rtk",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/rtk-ai/rtk.git",
+        "path": ".claude/skills",
+        "ref": "develop"
+      },
+      "strict": false,
+      "skills": [
+        "./code-simplifier",
+        "./design-patterns",
+        "./issue-triage",
+        "./performance",
+        "./pr-review",
+        "./pr-triage",
+        "./repo-recap",
+        "./rtk-tdd",
+        "./rtk-triage",
+        "./security-guardian",
+        "./ship",
+        "./tdd-rust"
+      ]
+    },
+    {
+      "name": "codegraph",
+      "displayName": "CodeGraph",
+      "description": "Kod tabani icin graf indeksi saglayan MCP sunucusu (yerel calisir).",
+      "author": {
+        "name": "colbymchenry"
+      },
+      "category": "development",
+      "homepage": "https://github.com/colbymchenry/codegraph",
+      "source": "./plugins/codegraph"
+    },
+    {
+      "name": "codebase-memory",
+      "displayName": "Codebase Memory",
+      "description": "Kod tabani bilgi grafi MCP sunucusu, 159 dil destegi (yerel calisir).",
+      "author": {
+        "name": "DeusData"
+      },
+      "category": "development",
+      "homepage": "https://github.com/DeusData/codebase-memory-mcp",
+      "source": "./plugins/codebase-memory"
+    }
+  ]
+}

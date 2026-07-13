@@ -1,0 +1,46 @@
+name: Marketplace Sync
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - sources.json
+      - scripts/build_marketplace.py
+      - plugins/**
+
+permissions:
+  contents: write
+
+concurrency:
+  group: marketplace-sync
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Marketplace dosyasini uret
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/build_marketplace.py
+
+      - name: Degisiklik varsa commit at
+        run: |
+          if git diff --quiet -- .claude-plugin/marketplace.json; then
+            echo "Degisiklik yok"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .claude-plugin/marketplace.json
+          git commit -m "chore: marketplace senkronize edildi"
+          git push

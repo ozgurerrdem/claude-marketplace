@@ -1,0 +1,7 @@
+{
+  "name": "codebase-memory",
+  "description": "Codebase Memory MCP sunucusu: kod tabani bilgi grafi, 159 dil.",
+  "version": "1.0.0",
+  "author": { "name": "DeusData" },
+  "homepage": "https://github.com/DeusData/codebase-memory-mcp"
+}

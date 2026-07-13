@@ -1,0 +1,53 @@
+[
+  {
+    "kind": "plugin",
+    "name": "andrej-karpathy-skills",
+    "displayName": "Karpathy Guidelines",
+    "description": "LLM kodlama hatalarini azaltan davranissal kurallar (Think Before Coding, Simplicity First, Surgical Changes).",
+    "author": "forrestchang",
+    "category": "workflow",
+    "repo": "multica-ai/andrej-karpathy-skills",
+    "ref": "main"
+  },
+  {
+    "kind": "plugin",
+    "name": "context-mode",
+    "displayName": "Context Mode",
+    "description": "Context penceresini koruyan MCP plugin: sandbox kod calistirma, FTS5 bilgi tabani, intent bazli arama.",
+    "author": "Mert Koseoglu",
+    "category": "development",
+    "repo": "mksglu/context-mode",
+    "ref": "main"
+  },
+  {
+    "kind": "skills-subdir",
+    "name": "rtk-skills",
+    "displayName": "RTK Skills",
+    "description": "RTK deposundaki skill seti: pr-review, issue-triage, tdd, performance, security-guardian, ship.",
+    "author": "rtk-ai",
+    "category": "development",
+    "repo": "rtk-ai/rtk",
+    "ref": "develop",
+    "path": ".claude/skills"
+  },
+  {
+    "kind": "local",
+    "name": "codegraph",
+    "displayName": "CodeGraph",
+    "description": "Kod tabani icin graf indeksi saglayan MCP sunucusu (yerel calisir).",
+    "author": "colbymchenry",
+    "category": "development",
+    "homepage": "https://github.com/colbymchenry/codegraph",
+    "source": "./plugins/codegraph"
+  },
+  {
+    "kind": "local",
+    "name": "codebase-memory",
+    "displayName": "Codebase Memory",
+    "description": "Kod tabani bilgi grafi MCP sunucusu, 159 dil destegi (yerel calisir).",
+    "author": "DeusData",
+    "category": "development",
+    "homepage": "https://github.com/DeusData/codebase-memory-mcp",
+    "source": "./plugins/codebase-memory"
+  }
+]
