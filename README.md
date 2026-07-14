@@ -1,27 +1,78 @@
 # ozgur-marketplace
 
-Claude (Desktop / Cowork / Claude Code) icin kisisel plugin marketplace.
+Claude Desktop, Cowork ve Claude Code icin kisisel plugin marketplace.
+
+Kaynak repolar burada **kopyalanmaz**, referans edilir. `.claude-plugin/marketplace.json`
+her plugin icin "hangi repo, hangi branch, hangi klasor" bilgisini tutar; Claude kurulum
+aninda icerigi upstream'den ceker. Boylece pluginler kendiliginden guncel kalir.
 
 ## Icerik
 
-| Plugin | Kaynak | Tur |
-|---|---|---|
-| andrej-karpathy-skills | multica-ai/andrej-karpathy-skills | skill |
-| context-mode | mksglu/context-mode | skill + yerel MCP |
-| rtk-skills | rtk-ai/rtk (`.claude/skills`) | skill |
-| codegraph | npm `@colbymchenry/codegraph` | yerel MCP |
-| codebase-memory | npm `codebase-memory-mcp` | yerel MCP |
+| Plugin | Kaynak | Tur | Ne ise yarar |
+|---|---|---|---|
+| **vatan-skills** | `plugins/vatan-skills` (bu repo) | 5 skill | .NET, MSSQL, PostgreSQL, React ve legacy .NET icin kurumsal gelistirme standartlari |
+| **context-mode** | `mksglu/context-mode` | skill + yerel MCP | Buyuk tool ciktilarini yerel FTS5 veritabanina alip ajana ozet doner; context penceresini korur |
+| **serena** | `plugins/serena` -> `oraios/serena` | yerel MCP | LSP tabanli sembol duzeyi kod navigasyonu ve duzenleme |
+| **context7** | `plugins/context7` -> `upstash/context7` | yerel MCP | Kutuphanelerin surume ozel guncel dokumanlarini context'e ceker |
+| **andrej-karpathy-skills** | `multica-ai/andrej-karpathy-skills` | skill | LLM kodlama hatalarini azaltan davranissal kurallar |
 
-## Kullanim
+### vatan-skills icerigi
 
-Claude Desktop: **Customize > Plugins > Personal plugins > + > Add marketplace** -> `KULLANICI/claude-marketplace`
+| Skill | Kapsam |
+|---|---|
+| `vatan-dotnet-core` | Katmanli mimari, DI kaydi, servis tasarimi, hata yonetimi, Turkce structured log, async/CancellationToken, cache (in-memory vs Redis), kod kalite kurallari |
+| `vatan-sql` | MSSQL: stored procedure/fonksiyon, `@Sorun`/`@Mesaj` bayrak tabanli hata sozlesmesi, Dapper cagrisi, connection omru, indeks, deadlock |
+| `vatan-postgres` | PostgreSQL: PL/pgSQL fonksiyon/prosedur, Npgsql tuzaklari, `ON CONFLICT` upsert, advisory lock, tip ve indeks kurallari |
+| `vatan-react-js` | React: TypeScript zorunlu, feature bazli klasor yapisi, TanStack Query, react-hook-form + zod, API katmani, Turkce arayuz |
+| `vatan-legacy-dotnet` | .NET Framework / WCF: `ConfigureAwait(false)`, sozlesme kirmama, kademeli modernizasyon |
+
+## Kurulum
+
+Claude Desktop: **Customize > Plugins > Personal plugins > `+` > Add marketplace**
+-> `ozgurerrdem/claude-marketplace` -> katalogdan istedigin plugini **Install**.
+
+Guncelleme: marketplace kartindaki menuden **Update**. Upstream repolardaki son commit cekilir.
+
+### On kosullar
+
+| Plugin | Gereksinim |
+|---|---|
+| serena | `uv` (`winget install astral-sh.uv`). Buyuk repolarda ilk kullanimdan once `serena project index` |
+| context7 | Node.js (`npx` ile calisir) |
+| context-mode | Node.js |
+| vatan-skills, karpathy | yok (saf skill) |
 
 ## Yeni kaynak ekleme
 
-`sources.json` dosyasina bir kayit ekle, push et. GitHub Actions `.claude-plugin/marketplace.json` dosyasini yeniden uretir.
+`sources.json` dosyasina bir kayit ekle ve push et. GitHub Actions `.claude-plugin/marketplace.json`
+dosyasini yeniden uretir.
 
-- `kind: plugin` -> hedef repoda `.claude-plugin/plugin.json` var
-- `kind: skills-subdir` -> hedef repoda manifest yok, `path` altindaki SKILL.md klasorleri otomatik taranir
-- `kind: local` -> `plugins/<ad>/` altinda kendi sardigin plugin (MCP sunuculari icin)
+| `kind` | Ne zaman |
+|---|---|
+| `plugin` | Hedef reponun kokunde `.claude-plugin/plugin.json` var |
+| `skills-subdir` | Hedef repoda manifest yok; `path` altindaki `SKILL.md` klasorleri otomatik taranir |
+| `local` | `plugins/<ad>/` altinda bu repoda tutulan plugin (MCP sarmalayicilari ve kendi skillerimiz) |
 
-Sync gunluk 03:00 UTC cron ile veya Actions sekmesinden **Run workflow** ile calisir.
+## Otomatik senkronizasyon
+
+`.github/workflows/sync-marketplace.yml`:
+
+- Her gun 03:00 UTC (cron)
+- `sources.json`, `scripts/` veya `plugins/` degistiginde push'ta
+- Actions sekmesinden manuel (**Run workflow**)
+
+Job upstream repolari tarar, `marketplace.json`'i yeniden uretir ve degisiklik varsa commit atar.
+Degisiklik yoksa commit atmaz.
+
+## Yapi
+
+```
+.claude-plugin/marketplace.json   # uretilen katalog, elle duzenlenmez
+sources.json                      # elle duzenlenen tek dosya
+scripts/build_marketplace.py      # katalog ureteci
+.github/workflows/                # gunluk senkronizasyon
+plugins/
+  serena/          # MCP sarmalayici (.mcp.json)
+  context7/        # MCP sarmalayici (.mcp.json)
+  vatan-skills/    # kendi skill setimiz
+```
