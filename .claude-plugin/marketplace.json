@@ -5,6 +5,17 @@
   },
   "plugins": [
     {
+      "name": "vatan-skills",
+      "displayName": "Vatan Skills",
+      "description": "Vatan .NET, MSSQL ve PostgreSQL gelistirme standartlari.",
+      "author": {
+        "name": "Vatan"
+      },
+      "category": "development",
+      "homepage": "https://github.com/",
+      "source": "./plugins/vatan-skills"
+    },
+    {
       "name": "andrej-karpathy-skills",
       "displayName": "Karpathy Guidelines",
       "description": "LLM kodlama hatalarini azaltan davranissal kurallar (Think Before Coding, Simplicity First, Surgical Changes).",
@@ -57,15 +68,46 @@
       "source": "./plugins/context7"
     },
     {
-      "name": "vatan-skills",
-      "displayName": "Vatan Skills",
-      "description": "Vatan .NET, MSSQL ve PostgreSQL gelistirme standartlari.",
+      "name": "rtk-skills",
+      "displayName": "RTK Skills",
+      "description": "RTK deposundaki skill seti (Rust/PR akisina ozel).",
+      "author": {
+        "name": "rtk-ai"
+      },
+      "category": "development",
+      "homepage": "https://github.com/rtk-ai/rtk",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/rtk-ai/rtk.git",
+        "path": ".claude/skills",
+        "ref": "develop"
+      },
+      "strict": false,
+      "skills": [
+        "./code-simplifier",
+        "./design-patterns",
+        "./issue-triage",
+        "./performance",
+        "./pr-review",
+        "./pr-triage",
+        "./repo-recap",
+        "./rtk-tdd",
+        "./rtk-triage",
+        "./security-guardian",
+        "./ship",
+        "./tdd-rust"
+      ]
+    },
+    {
+      "name": "vatan-setup",
+      "displayName": "Vatan Setup",
+      "description": "Tek komutla tum on kosullari kurar, RTK hook'unu etkinlestirir, projeyi indeksler ve dogrular.",
       "author": {
         "name": "Vatan"
       },
       "category": "development",
-      "homepage": "https://github.com/",
-      "source": "./plugins/vatan-skills"
+      "homepage": "https://github.com/ozgurerrdem/claude-marketplace",
+      "source": "./plugins/vatan-setup"
     }
   ]
 }
