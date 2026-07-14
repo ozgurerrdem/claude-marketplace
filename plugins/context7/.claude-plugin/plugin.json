@@ -1,0 +1,7 @@
+{
+  "name": "context7",
+  "description": "Kutuphanelerin surume ozel guncel dokumanlarini context'e ceker.",
+  "version": "1.0.0",
+  "author": { "name": "Upstash" },
+  "homepage": "https://github.com/upstash/context7"
+}
