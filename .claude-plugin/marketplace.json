@@ -55,6 +55,17 @@
       "category": "development",
       "homepage": "https://github.com/upstash/context7",
       "source": "./plugins/context7"
+    },
+    {
+      "name": "vatan-skills",
+      "displayName": "Vatan Skills",
+      "description": "Vatan .NET, MSSQL ve PostgreSQL gelistirme standartlari.",
+      "author": {
+        "name": "Vatan"
+      },
+      "category": "development",
+      "homepage": "https://github.com/",
+      "source": "./plugins/vatan-skills"
     }
   ]
 }
