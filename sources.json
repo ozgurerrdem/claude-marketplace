@@ -21,16 +21,6 @@
   },
   {
     "kind": "local",
-    "name": "codegraph",
-    "displayName": "CodeGraph",
-    "description": "Kod tabani icin graf indeksi saglayan MCP sunucusu (yerel calisir).",
-    "author": "colbymchenry",
-    "category": "development",
-    "homepage": "https://github.com/colbymchenry/codegraph",
-    "source": "./plugins/codegraph"
-  },
-  {
-    "kind": "local",
     "name": "serena",
     "displayName": "Serena",
     "description": "LSP tabanli sembol duzeyi kod navigasyonu ve duzenleme (C# destekli).",
