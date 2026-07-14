@@ -16,21 +16,27 @@ description: >
 
 ## Kullanim tablosu
 
-| Ham komut | rtk karsiligi |
+Olculmus kazanc oldugu icin **daima** rtk uzerinden calistir:
+
+| Ham komut | rtk karsiligi | Olculen tasarruf |
+|---|---|---|
+| `dotnet build` | `rtk dotnet build` | ~%90 |
+| `dotnet test` | `rtk dotnet test` | ~%90 (test varsa) |
+| `dotnet format` | `rtk dotnet format` | yuksek |
+| `npm test`, `npm run build` | `rtk npm ...` | yuksek |
+| `git status` / `git log` / `git diff` | `rtk git ...` | ~%25 |
+| `cat`, `head`, `tail` | `rtk read <dosya>` | ~%70 |
+| `ls`, `tree` | `rtk ls` | ~%80 |
+
+Kazanc saglamayan, **ham kullan**:
+
+| Komut | Sebep |
 |---|---|
-| `git status` | `rtk git status` |
-| `git log` | `rtk git log` |
-| `git diff` | `rtk git diff` |
-| `git add` / `commit` / `push` | `rtk git add` / `rtk git commit` / `rtk git push` |
-| `ls`, `tree` | `rtk ls` |
-| `cat`, `head`, `tail` | `rtk read <dosya>` |
-| `grep`, `rg` | `rtk grep <desen>` |
-| `find` | `rtk find <desen>` |
-| `dotnet build` | `rtk dotnet build` |
-| `dotnet test` | `rtk dotnet test` |
-| `dotnet format` | `rtk dotnet format` |
-| `npm test`, `npm run build` | `rtk npm test`, `rtk npm run build` |
-| `docker ps` | `rtk docker ps` |
+| `rg` / arama | Cikti zaten kompakt, rtk katkisi ~%0 |
+| `git add`, `git commit`, `git push` | Cikti zaten kisa |
+| Interaktif komutlar (`dotnet watch`, `npm start`) | rtk ile sarilmaz |
+
+Windows notu: `rtk grep` calismaz (`grep` binary'si yoktur). Arama gerekiyorsa ham `rg` kullan.
 
 ## Dahili araclar
 
