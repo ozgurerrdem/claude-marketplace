@@ -28,5 +28,15 @@
     "category": "development",
     "homepage": "https://github.com/colbymchenry/codegraph",
     "source": "./plugins/codegraph"
+  },
+  {
+    "kind": "local",
+    "name": "serena",
+    "displayName": "Serena",
+    "description": "LSP tabanli sembol duzeyi kod navigasyonu ve duzenleme (C# destekli).",
+    "author": "Oraios AI",
+    "category": "development",
+    "homepage": "https://github.com/oraios/serena",
+    "source": "./plugins/serena"
   }
 ]
