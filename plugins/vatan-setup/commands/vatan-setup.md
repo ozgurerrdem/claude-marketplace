@@ -11,6 +11,15 @@ Kurallar:
 - Isletim sistemini tespit et ve dogru paket yoneticisini kullan.
 - Sonunda tek bir tablo halinde rapor ver.
 
+## Calisma modu
+
+Once `~/.claude/settings.json` icinde RTK hook'u var mi ve `rtk --version` calisiyor mu kontrol et.
+
+- **Ikisi de varsa** → global kurulum daha once yapilmis. Adim 1 ve 2'yi **atla**, dogrudan
+  Adim 3'ten (Serena indeksleme) basla ve "global kurulum zaten mevcut, sadece proje indekslemesi
+  yapiliyor" diye bildir.
+- **Yoksa** → tam kurulum yap (Adim 1'den basla).
+
 ## 1. On kosul kontrolu
 
 ```
