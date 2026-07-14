@@ -1,5 +1,14 @@
 [
   {
+    "kind": "local",
+    "name": "vatan-skills",
+    "displayName": "Vatan Skills",
+    "description": "Vatan .NET, MSSQL ve PostgreSQL gelistirme standartlari.",
+    "author": "Vatan",
+    "category": "development",
+    "source": "./plugins/vatan-skills"
+  },
+  {
     "kind": "plugin",
     "name": "andrej-karpathy-skills",
     "displayName": "Karpathy Guidelines",
@@ -40,12 +49,24 @@
     "source": "./plugins/context7"
   },
   {
+    "kind": "skills-subdir",
+    "name": "rtk-skills",
+    "displayName": "RTK Skills",
+    "description": "RTK deposundaki skill seti (Rust/PR akisina ozel).",
+    "author": "rtk-ai",
+    "category": "development",
+    "repo": "rtk-ai/rtk",
+    "ref": "develop",
+    "path": ".claude/skills"
+  },
+  {
     "kind": "local",
-    "name": "vatan-skills",
-    "displayName": "Vatan Skills",
-    "description": "Vatan .NET, MSSQL ve PostgreSQL gelistirme standartlari.",
+    "name": "vatan-setup",
+    "displayName": "Vatan Setup",
+    "description": "Tek komutla tum on kosullari kurar, RTK hook'unu etkinlestirir, projeyi indeksler ve dogrular.",
     "author": "Vatan",
     "category": "development",
-    "source": "./plugins/vatan-skills"
+    "homepage": "https://github.com/ozgurerrdem/claude-marketplace",
+    "source": "./plugins/vatan-setup"
   }
 ]

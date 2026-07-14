@@ -1,0 +1,7 @@
+{
+  "name": "vatan-setup",
+  "description": "Tek komutla tum marketplace pluginlerini calisir hale getirir: on kosul kurulumu, RTK auto-rewrite hook, Serena indeksleme ve dogrulama.",
+  "version": "1.0.0",
+  "author": { "name": "Vatan" },
+  "homepage": "https://github.com/ozgurerrdem/claude-marketplace"
+}
