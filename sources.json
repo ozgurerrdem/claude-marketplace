@@ -20,17 +20,6 @@
     "ref": "main"
   },
   {
-    "kind": "skills-subdir",
-    "name": "rtk-skills",
-    "displayName": "RTK Skills",
-    "description": "RTK deposundaki skill seti: pr-review, issue-triage, tdd, performance, security-guardian, ship.",
-    "author": "rtk-ai",
-    "category": "development",
-    "repo": "rtk-ai/rtk",
-    "ref": "develop",
-    "path": ".claude/skills"
-  },
-  {
     "kind": "local",
     "name": "codegraph",
     "displayName": "CodeGraph",
@@ -39,15 +28,5 @@
     "category": "development",
     "homepage": "https://github.com/colbymchenry/codegraph",
     "source": "./plugins/codegraph"
-  },
-  {
-    "kind": "local",
-    "name": "codebase-memory",
-    "displayName": "Codebase Memory",
-    "description": "Kod tabani bilgi grafi MCP sunucusu, 159 dil destegi (yerel calisir).",
-    "author": "DeusData",
-    "category": "development",
-    "homepage": "https://github.com/DeusData/codebase-memory-mcp",
-    "source": "./plugins/codebase-memory"
   }
 ]
