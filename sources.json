@@ -38,5 +38,15 @@
     "category": "development",
     "homepage": "https://github.com/oraios/serena",
     "source": "./plugins/serena"
+  },
+  {
+    "kind": "local",
+    "name": "context7",
+    "displayName": "Context7",
+    "description": "Kutuphanelerin surume ozel guncel dokumanlarini context'e cekar.",
+    "author": "Upstash",
+    "category": "development",
+    "homepage": "https://github.com/upstash/context7",
+    "source": "./plugins/context7"
   }
 ]
