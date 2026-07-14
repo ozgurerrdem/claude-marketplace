@@ -1,7 +1,0 @@
-{
-  "name": "codegraph",
-  "description": "CodeGraph MCP sunucusu: kod tabani graf indeksi ve semantik kesif.",
-  "version": "1.0.0",
-  "author": { "name": "colbymchenry" },
-  "homepage": "https://github.com/colbymchenry/codegraph"
-}
