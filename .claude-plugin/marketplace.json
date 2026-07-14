@@ -44,6 +44,28 @@
       "category": "development",
       "homepage": "https://github.com/colbymchenry/codegraph",
       "source": "./plugins/codegraph"
+    },
+    {
+      "name": "serena",
+      "displayName": "Serena",
+      "description": "LSP tabanli sembol duzeyi kod navigasyonu ve duzenleme (C# destekli).",
+      "author": {
+        "name": "Oraios AI"
+      },
+      "category": "development",
+      "homepage": "https://github.com/oraios/serena",
+      "source": "./plugins/serena"
+    },
+    {
+      "name": "context7",
+      "displayName": "Context7",
+      "description": "Kutuphanelerin surume ozel guncel dokumanlarini context'e cekar.",
+      "author": {
+        "name": "Upstash"
+      },
+      "category": "development",
+      "homepage": "https://github.com/upstash/context7",
+      "source": "./plugins/context7"
     }
   ]
 }
