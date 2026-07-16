@@ -36,8 +36,8 @@
       "category": "workflow",
       "homepage": "https://github.com/multica-ai/andrej-karpathy-skills",
       "source": {
-        "source": "github",
-        "repo": "multica-ai/andrej-karpathy-skills",
+        "source": "url",
+        "url": "https://github.com/multica-ai/andrej-karpathy-skills.git",
         "ref": "main"
       }
     },
@@ -51,8 +51,8 @@
       "category": "development",
       "homepage": "https://github.com/mksglu/context-mode",
       "source": {
-        "source": "github",
-        "repo": "mksglu/context-mode",
+        "source": "url",
+        "url": "https://github.com/mksglu/context-mode.git",
         "ref": "main"
       }
     },

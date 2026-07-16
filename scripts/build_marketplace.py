@@ -59,7 +59,14 @@ def base_entry(s):
 
 def build_plugin(s):
     entry = base_entry(s)
-    entry["source"] = {"source": "github", "repo": s["repo"], "ref": s.get("ref", "main")}
+    # "source": "github" + "repo" makes Claude Code clone over SSH (git@github.com:...),
+    # which fails with "Permission denied (publickey)" for anyone without a GitHub SSH key
+    # configured. "source": "url" with an explicit https:// .git URL clones over HTTPS instead.
+    entry["source"] = {
+        "source": "url",
+        "url": f"https://github.com/{s['repo']}.git",
+        "ref": s.get("ref", "main"),
+    }
     return entry
 
 
