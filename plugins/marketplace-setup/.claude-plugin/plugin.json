@@ -1,7 +1,7 @@
 {
-  "name": "vatan-setup",
+  "name": "marketplace-setup",
   "description": "Tek komutla tum on kosullari kurar, RTK hook'unu etkinlestirir, projeyi indeksler, dogrular ve buyudukce indeksleri tazeler.",
   "version": "1.0.0",
-  "author": { "name": "Vatan" },
+  "author": { "name": "Ozgur Dagdeviren" },
   "homepage": "https://github.com/ozgurerrdem/claude-marketplace"
 }

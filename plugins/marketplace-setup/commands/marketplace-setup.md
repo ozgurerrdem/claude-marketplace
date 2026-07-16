@@ -2,7 +2,7 @@
 description: Marketplace pluginlerinin tum on kosullarini kurar, projeyi indeksler ve dogrular.
 ---
 
-Bu proje icin Vatan marketplace pluginlerini uctan uca calisir hale getir.
+Bu proje icin marketplace pluginlerini uctan uca calisir hale getir.
 
 Kurallar:
 - Her adimda once **kontrol et**, kurulu olani tekrar kurma.

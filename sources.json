@@ -71,12 +71,12 @@
   },
   {
     "kind": "local",
-    "name": "vatan-setup",
-    "displayName": "Vatan Setup",
+    "name": "marketplace-setup",
+    "displayName": "Marketplace Setup",
     "description": "Tek komutla tum on kosullari kurar, RTK hook'unu etkinlestirir, projeyi indeksler ve dogrular.",
-    "author": "Vatan",
+    "author": "Ozgur Dagdeviren",
     "category": "development",
     "homepage": "https://github.com/ozgurerrdem/claude-marketplace",
-    "source": "./plugins/vatan-setup"
+    "source": "./plugins/marketplace-setup"
   }
 ]

@@ -2,7 +2,7 @@
 description: Kurulu pluginlerin gercekten calisip calismadigini test eder, hicbir sey kurmaz.
 ---
 
-Kurulu Vatan marketplace pluginlerini test et. **Hicbir sey kurma, hicbir dosya degistirme.**
+Kurulu marketplace pluginlerini test et. **Hicbir sey kurma, hicbir dosya degistirme.**
 Sorun bulursan cozmeye calisma, sadece raporla.
 
 ## 1. Envanter

@@ -13,7 +13,7 @@ Proje kokunde `.serena/project.yml` var mi kontrol et.
 ```
   uvx --native-tls --from git+https://github.com/oraios/serena serena project index
 ```
-- **Yoksa**: proje hic kurulmamis demektir, kullaniciya `/vatan-setup` calistirmasini soyle ve dur.
+- **Yoksa**: proje hic kurulmamis demektir, kullaniciya `/marketplace-setup` calistirmasini soyle ve dur.
 
 Serena LSP tabanli oldugu icin gunluk kucuk degisiklikleri zaten canli takip eder; bu adim
 esas olarak buyuk toplu degisiklik (branch degisimi, rebase, yeni modul) sonrasi icindir.
@@ -39,5 +39,5 @@ isabet edip etmedigini dogrula.
 | context-mode | | yeniden indekslendi mi, kac dosya |
 ```
 
-Ne zaman tekrar `/vatan-refresh` calistirilmasi gerektigini kisaca hatirlat: yeni modul/dosya
+Ne zaman tekrar `/marketplace-refresh` calistirilmasi gerektigini kisaca hatirlat: yeni modul/dosya
 eklendiginde, buyuk merge/rebase sonrasi, ya da `ctx_search` alakasiz sonuc donmeye basladiginda.
