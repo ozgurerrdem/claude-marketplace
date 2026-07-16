@@ -1,0 +1,6 @@
+{
+  "name": "engineering-standards",
+  "description": "Vendor-neutral engineering standards: Clean Architecture .NET, MSSQL, PostgreSQL, React, and legacy .NET modernization.",
+  "version": "1.0.0",
+  "author": { "name": "Ozgur Dagdeviren" }
+}

@@ -9,6 +9,16 @@
     "source": "./plugins/vatan-skills"
   },
   {
+    "kind": "local",
+    "name": "engineering-standards",
+    "displayName": "Engineering Standards",
+    "description": "Vendor-neutral Clean Architecture standards: .NET, MSSQL, PostgreSQL, React, legacy .NET.",
+    "author": "Ozgur Dagdeviren",
+    "category": "development",
+    "homepage": "https://github.com/ozgurerrdem/claude-marketplace",
+    "source": "./plugins/engineering-standards"
+  },
+  {
     "kind": "plugin",
     "name": "andrej-karpathy-skills",
     "displayName": "Karpathy Guidelines",

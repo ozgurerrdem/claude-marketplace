@@ -16,6 +16,17 @@
       "source": "./plugins/vatan-skills"
     },
     {
+      "name": "engineering-standards",
+      "displayName": "Engineering Standards",
+      "description": "Vendor-neutral Clean Architecture standards: .NET, MSSQL, PostgreSQL, React, legacy .NET.",
+      "author": {
+        "name": "Ozgur Dagdeviren"
+      },
+      "category": "development",
+      "homepage": "https://github.com/ozgurerrdem/claude-marketplace",
+      "source": "./plugins/engineering-standards"
+    },
+    {
       "name": "andrej-karpathy-skills",
       "displayName": "Karpathy Guidelines",
       "description": "LLM kodlama hatalarini azaltan davranissal kurallar (Think Before Coding, Simplicity First, Surgical Changes).",
