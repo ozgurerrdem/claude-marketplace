@@ -75,7 +75,8 @@ Mesajlar Turkce; parola/token/kisisel veri loglanmaz.
   uzun vadede Git'e gecis planlanmaktadir.
 - TFVC calisirken: workspace eslemesi bozulmus dosyalar (silinmis ama sunucuda duran, ya da
   yerelde olup eklenmeyen) is basina temizlenir; "pending changes" temiz birakilir.
-- Bir isi hem TFS'te hem Git'te paralel gelistirme.
+- Bir isi hem TFS'te hem Git'te paralel gelistirme; her degisiklik icin tek bir kaynak kontrolu
+  esas alinir. Aksi halde tarih dagilir ve degisiklikler kaybolur.
 
 ## Modernizasyon stratejisi
 

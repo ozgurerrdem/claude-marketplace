@@ -98,6 +98,9 @@ Servis icinde `IOptions<T>` (sabit) veya `IOptionsMonitor<T>` (calisma aninda de
 enjekte edilir. Gizli bilgi (parola, token, connection string) koda ya da repoya yazilmaz;
 ortam degiskeni veya secret store uzerinden gelir.
 
+Konfigurasyon acilista dogrulanir (`ValidateOnStart()`); hatali ayar, ilk kullanimda degil
+uygulama ayaga kalkarken patlasin (fail-fast).
+
 ## Servis tasarimi
 
 Servisler ince tutulur. Bir servis metodu: girdi dogrula -> is akisini yurut -> sonuc don.
@@ -154,6 +157,8 @@ _logger.LogError(ex, "Fiyat guncelleme basarisiz. Barkod: {Barkod}", barkod);
   `Error` exception, `Debug` gelistirme ayrintisi. `Critical` sadece servis ayakta kalamayacaksa.
 - Sicak yolda (her istekte calisan kod) asiri log yazma.
 - Parola, token, TC kimlik, kart bilgisi loglanmaz.
+- Bir istegin servisler arasinda takip edilebilmesi icin korelasyon/izleme kimligi tasinir
+  (`ILogger` scope'u veya OpenTelemetry ile). Log satirlari bu kimlikle iliskilendirilir.
 
 ## Async kurallari
 
@@ -230,7 +235,9 @@ services.AddHttpClient<ITedarikciClient, TedarikciClient>(client =>
 ```
 
 Zaman asimi, yeniden deneme ve devre kesici (retry/circuit breaker) gereksinimi varsa
-gelistiriciye sor; varsayilan olarak ekleme.
+gelistiriciye sor; varsayilan olarak ekleme. Gerektiginde .NET 8+ tarafinda hazir
+`AddStandardResilienceHandler` (Microsoft.Extensions.Http.Resilience) veya Polly kullan;
+elle retry dongusu yazma. Harici cagrida zaman asimi hic yoksa bunu gelistiriciye bildir.
 
 ## Kod kalitesi (Sonar ve benzeri statik analize uygun)
 
