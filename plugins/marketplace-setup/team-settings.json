@@ -1,20 +1,17 @@
 {
   "extraKnownMarketplaces": {
-    "ozgur-marketplace": {
-      "source": {
-        "source": "github",
-        "repo": "ozgurerrdem/claude-marketplace"
-      }
+    "claude-marketplace": {
+      "source": { "source": "github", "repo": "ozgurerrdem/claude-marketplace" }
     }
   },
   "enabledPlugins": {
-    "vatan-skills@ozgur-marketplace": true,
-    "engineering-standards@ozgur-marketplace": true,
-    "andrej-karpathy-skills@ozgur-marketplace": true,
-    "context-mode@ozgur-marketplace": true,
-    "serena@ozgur-marketplace": true,
-    "context7@ozgur-marketplace": true,
-    "rtk-skills@ozgur-marketplace": true,
-    "marketplace-setup@ozgur-marketplace": true
+    "vatan-skills@claude-marketplace": true,
+    "engineering-standards@claude-marketplace": true,
+    "andrej-karpathy-skills@claude-marketplace": true,
+    "context-mode@claude-marketplace": true,
+    "serena@claude-marketplace": true,
+    "context7@claude-marketplace": true,
+    "rtk-skills@claude-marketplace": true,
+    "marketplace-setup@claude-marketplace": true
   }
 }

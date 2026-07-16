@@ -9,7 +9,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / ".claude-plugin" / "marketplace.json"
 TEAM_SETTINGS_OUT = ROOT / "plugins" / "marketplace-setup" / "team-settings.json"
 
-MARKETPLACE_NAME = "ozgur-marketplace"
+MARKETPLACE_NAME = "claude-marketplace"
 MARKETPLACE_OWNER = "Ozgur Dagdeviren"
 MARKETPLACE_REPO = "ozgurerrdem/claude-marketplace"
 

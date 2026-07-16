@@ -1,4 +1,4 @@
-# ozgur-marketplace
+# claude-marketplace
 
 Claude Desktop, Cowork ve Claude Code icin kisisel plugin marketplace.
 
@@ -37,7 +37,7 @@ Guncelleme: marketplace kartindaki menuden **Update**. Upstream repolardaki son 
 
 **Onemli:** Sadece marketplace'i eklemek (`Add marketplace` / `claude plugin marketplace add`)
 hicbir plugin'i kurmaz — bu adim yalnizca katalogu kaydeder. Her plugin ayrica tek tek
-**Install** edilmeli / `claude plugin install <ad>@ozgur-marketplace` calistirilmalidir. Bu,
+**Install** edilmeli / `claude plugin install <ad>@claude-marketplace` calistirilmalidir. Bu,
 sadece o an kurulumu yapan kisinin makinesini etkiler.
 
 ### Ekip icin otomatik dagitim (`.claude/settings.json`)
