@@ -2,6 +2,11 @@
 
 Claude Desktop, Cowork ve Claude Code icin kisisel plugin marketplace.
 
+> Bu GitHub reposunun adi `claude-marketplace`, ama Claude Code'a eklendiginde marketplace
+> **`vatan-marketplace`** adiyla kayit olur (`claude-marketplace` gibi isimler Anthropic'in
+> resmi marketplace'ini taklit sayilip reddediliyor). Plugin ID'leri bu yuzden
+> `<plugin>@vatan-marketplace` seklinde.
+
 Kaynak repolar burada **kopyalanmaz**, referans edilir. `.claude-plugin/marketplace.json`
 her plugin icin "hangi repo, hangi branch, hangi klasor" bilgisini tutar; Claude kurulum
 aninda icerigi upstream'den ceker. Boylece pluginler kendiliginden guncel kalir.
@@ -37,7 +42,7 @@ Guncelleme: marketplace kartindaki menuden **Update**. Upstream repolardaki son 
 
 **Onemli:** Sadece marketplace'i eklemek (`Add marketplace` / `claude plugin marketplace add`)
 hicbir plugin'i kurmaz — bu adim yalnizca katalogu kaydeder. Her plugin ayrica tek tek
-**Install** edilmeli / `claude plugin install <ad>@claude-marketplace` calistirilmalidir. Bu,
+**Install** edilmeli / `claude plugin install <ad>@vatan-marketplace` calistirilmalidir. Bu,
 sadece o an kurulumu yapan kisinin makinesini etkiler.
 
 ### Ekip icin otomatik dagitim (`.claude/settings.json`)

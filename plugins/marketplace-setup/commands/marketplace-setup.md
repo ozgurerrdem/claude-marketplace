@@ -119,19 +119,19 @@ yapma, JSON'u birlestir) ekle:
 ```json
 {
   "extraKnownMarketplaces": {
-    "claude-marketplace": {
+    "vatan-marketplace": {
       "source": { "source": "github", "repo": "ozgurerrdem/claude-marketplace" }
     }
   },
   "enabledPlugins": {
-    "vatan-skills@claude-marketplace": true,
-    "engineering-standards@claude-marketplace": true,
-    "andrej-karpathy-skills@claude-marketplace": true,
-    "context-mode@claude-marketplace": true,
-    "serena@claude-marketplace": true,
-    "context7@claude-marketplace": true,
-    "rtk-skills@claude-marketplace": true,
-    "marketplace-setup@claude-marketplace": true
+    "vatan-skills@vatan-marketplace": true,
+    "engineering-standards@vatan-marketplace": true,
+    "andrej-karpathy-skills@vatan-marketplace": true,
+    "context-mode@vatan-marketplace": true,
+    "serena@vatan-marketplace": true,
+    "context7@vatan-marketplace": true,
+    "rtk-skills@vatan-marketplace": true,
+    "marketplace-setup@vatan-marketplace": true
   }
 }
 ```
@@ -151,9 +151,9 @@ claude plugin marketplace list
 claude plugin list
 ```
 
-`claude-marketplace` yoksa `claude plugin marketplace add ozgurerrdem/claude-marketplace`,
+`vatan-marketplace` yoksa `claude plugin marketplace add ozgurerrdem/claude-marketplace`,
 ardindan `claude plugin list`'te gorunmeyen her plugin icin (kuracagini tek satirla soyleyip
-onay alarak) `claude plugin install <ad>@claude-marketplace` calistirabilirsin — ama bu sadece
+onay alarak) `claude plugin install <ad>@vatan-marketplace` calistirabilirsin — ama bu sadece
 senin makineni kurar, ekip icin gecerli kalici cozum yukaridaki `.claude/settings.json`'dur.
 
 MCP sunuculari **sadece yeni bir oturumda** yuklenir. Bu adimda hicbir plugin kurulmadiysa
@@ -212,7 +212,7 @@ Skill'leri de dogrula: `vatan-dotnet-core`, `vatan-sql`, `vatan-postgres`, `vata
 |---|---|---|
 | git / node / uv / rtk / rg | | surum |
 | RTK hook | | kullanici calistirdi mi, hook check sonucu |
-| marketplace + pluginler | | claude-marketplace kayitli mi, hangi pluginler kuruldu |
+| marketplace + pluginler | | vatan-marketplace kayitli mi, hangi pluginler kuruldu |
 | serena | | tool gorunuyor mu, indeks alindi mi |
 | context7 | | tool gorunuyor mu |
 | context-mode | | kac dosya indekslendi |
