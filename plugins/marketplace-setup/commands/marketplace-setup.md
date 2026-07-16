@@ -130,7 +130,6 @@ yapma, JSON'u birlestir) ekle:
     "context-mode@vatan-marketplace": true,
     "serena@vatan-marketplace": true,
     "context7@vatan-marketplace": true,
-    "rtk-skills@vatan-marketplace": true,
     "marketplace-setup@vatan-marketplace": true
   }
 }

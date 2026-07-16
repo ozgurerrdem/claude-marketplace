@@ -79,37 +79,6 @@
       "source": "./plugins/context7"
     },
     {
-      "name": "rtk-skills",
-      "displayName": "RTK Skills",
-      "description": "RTK deposundaki skill seti (Rust/PR akisina ozel).",
-      "author": {
-        "name": "rtk-ai"
-      },
-      "category": "development",
-      "homepage": "https://github.com/rtk-ai/rtk",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/rtk-ai/rtk.git",
-        "path": ".claude/skills",
-        "ref": "develop"
-      },
-      "strict": false,
-      "skills": [
-        "./code-simplifier",
-        "./design-patterns",
-        "./issue-triage",
-        "./performance",
-        "./pr-review",
-        "./pr-triage",
-        "./repo-recap",
-        "./rtk-tdd",
-        "./rtk-triage",
-        "./security-guardian",
-        "./ship",
-        "./tdd-rust"
-      ]
-    },
-    {
       "name": "marketplace-setup",
       "displayName": "Marketplace Setup",
       "description": "Tek komutla tum on kosullari kurar, RTK hook'unu etkinlestirir, projeyi indeksler ve dogrular.",

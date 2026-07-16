@@ -59,17 +59,6 @@
     "source": "./plugins/context7"
   },
   {
-    "kind": "skills-subdir",
-    "name": "rtk-skills",
-    "displayName": "RTK Skills",
-    "description": "RTK deposundaki skill seti (Rust/PR akisina ozel).",
-    "author": "rtk-ai",
-    "category": "development",
-    "repo": "rtk-ai/rtk",
-    "ref": "develop",
-    "path": ".claude/skills"
-  },
-  {
     "kind": "local",
     "name": "marketplace-setup",
     "displayName": "Marketplace Setup",
