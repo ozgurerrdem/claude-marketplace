@@ -1,0 +1,17 @@
+{
+  "extraKnownMarketplaces": {
+    "ozgur-marketplace": {
+      "source": { "source": "github", "repo": "ozgurerrdem/claude-marketplace" }
+    }
+  },
+  "enabledPlugins": {
+    "vatan-skills@ozgur-marketplace": true,
+    "engineering-standards@ozgur-marketplace": true,
+    "andrej-karpathy-skills@ozgur-marketplace": true,
+    "context-mode@ozgur-marketplace": true,
+    "serena@ozgur-marketplace": true,
+    "context7@ozgur-marketplace": true,
+    "rtk-skills@ozgur-marketplace": true,
+    "marketplace-setup@ozgur-marketplace": true
+  }
+}

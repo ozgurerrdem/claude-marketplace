@@ -7,9 +7,11 @@ import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / ".claude-plugin" / "marketplace.json"
+TEAM_SETTINGS_OUT = ROOT / "plugins" / "marketplace-setup" / "team-settings.json"
 
 MARKETPLACE_NAME = "ozgur-marketplace"
 MARKETPLACE_OWNER = "Ozgur Dagdeviren"
+MARKETPLACE_REPO = "ozgurerrdem/claude-marketplace"
 
 
 def gh(url):
@@ -128,6 +130,26 @@ def main():
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"{len(plugins)} plugin yazildi -> {OUT.relative_to(ROOT)}")
+
+    # Ekip icin proje `.claude/settings.json`'a birlestirilecek hazir sablon.
+    # marketplace-setup plugin'inin kendi klasorunde tutulur ki plugin kurulunca
+    # bu dosya da ekip uyeleriyle birlikte dagilsin (repo kokundeki dosyalar
+    # yerel kind="plugin" pluginlerle birlikte kopyalanmaz).
+    team_settings = {
+        "extraKnownMarketplaces": {
+            MARKETPLACE_NAME: {
+                "source": {"source": "github", "repo": MARKETPLACE_REPO}
+            }
+        },
+        "enabledPlugins": {
+            f"{p['name']}@{MARKETPLACE_NAME}": True for p in plugins
+        },
+    }
+    TEAM_SETTINGS_OUT.parent.mkdir(parents=True, exist_ok=True)
+    TEAM_SETTINGS_OUT.write_text(
+        json.dumps(team_settings, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
+    print(f"ekip sablonu yazildi -> {TEAM_SETTINGS_OUT.relative_to(ROOT)}")
 
     if failed:
         sys.exit(1)

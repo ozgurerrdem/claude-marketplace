@@ -28,10 +28,31 @@ aninda icerigi upstream'den ceker. Boylece pluginler kendiliginden guncel kalir.
 
 ## Kurulum
 
+### Tek kisilik kullanim (Claude Desktop UI)
+
 Claude Desktop: **Customize > Plugins > Personal plugins > `+` > Add marketplace**
 -> `ozgurerrdem/claude-marketplace` -> katalogdan istedigin plugini **Install**.
 
 Guncelleme: marketplace kartindaki menuden **Update**. Upstream repolardaki son commit cekilir.
+
+**Onemli:** Sadece marketplace'i eklemek (`Add marketplace` / `claude plugin marketplace add`)
+hicbir plugin'i kurmaz — bu adim yalnizca katalogu kaydeder. Her plugin ayrica tek tek
+**Install** edilmeli / `claude plugin install <ad>@ozgur-marketplace` calistirilmalidir. Bu,
+sadece o an kurulumu yapan kisinin makinesini etkiler.
+
+### Ekip icin otomatik dagitim (`.claude/settings.json`)
+
+Sirket ici bir ekipte herkesin ayni plugin setini otomatik almasi icin dogru yontem, hedef
+projenin `.claude/settings.json` dosyasina marketplace kaydini ve istenen plugin listesini
+yazip **git'e commitlemek**tir. Bir gelistirici projeyi ilk kez trust ettiginde Claude Code bu
+dosyaya bakar ve marketplace + plugin kurulumunu **onerir** (tek seferlik onay ister, sessiz
+kurulum yapmaz).
+
+Hazir sablon: [`plugins/marketplace-setup/team-settings.json`](plugins/marketplace-setup/team-settings.json)
+— icerigini hedef projenin `.claude/settings.json`'una birlestirin (mevcut anahtarlari koruyarak).
+Bu sablon `sources.json`'dan otomatik uretilir, elle guncellenmez.
+
+`/marketplace-setup` komutu (bkz. asagida) bu birlestirmeyi bir proje icin otomatik yapar.
 
 ### On kosullar
 
@@ -67,12 +88,14 @@ Degisiklik yoksa commit atmaz.
 ## Yapi
 
 ```
-.claude-plugin/marketplace.json   # uretilen katalog, elle duzenlenmez
-sources.json                      # elle duzenlenen tek dosya
-scripts/build_marketplace.py      # katalog ureteci
-.github/workflows/                # gunluk senkronizasyon
+.claude-plugin/marketplace.json           # uretilen katalog, elle duzenlenmez
+sources.json                              # elle duzenlenen tek dosya
+scripts/build_marketplace.py              # katalog + ekip sablonu ureteci
+.github/workflows/                        # gunluk senkronizasyon
 plugins/
-  serena/          # MCP sarmalayici (.mcp.json)
-  context7/        # MCP sarmalayici (.mcp.json)
-  vatan-skills/    # kendi skill setimiz
+  serena/                    # MCP sarmalayici (.mcp.json)
+  context7/                  # MCP sarmalayici (.mcp.json)
+  vatan-skills/               # kendi skill setimiz
+  marketplace-setup/
+    team-settings.json        # uretilen ekip sablonu, elle duzenlenmez
 ```

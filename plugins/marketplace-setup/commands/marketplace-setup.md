@@ -25,13 +25,17 @@ Once global kurulumun daha once yapilip yapilmadigini anla:
 - Kullanici ana klasorundeki `.claude\settings.json` dosyasinda RTK hook'u (`PreToolUse` altinda
   `rtk hook claude`) var mi?
 
-Karar:
-- **Ikisi de varsa** → global kurulum mevcut. Adim 1 ve 2'yi **atla**, dogrudan Adim 3'ten
-  (Serena indeksleme) basla. Kullaniciya "Global kurulum zaten yapilmis, sadece bu projenin
-  indekslemesini yapiyorum" de.
-- **Eksik varsa** → Adim 1'den tam kurulum yap.
+Ayrica plugin kurulum durumunu kontrol et: `claude plugin list` ciktisinda asagida (Adim 3'te)
+listelenen pluginlerin hepsi var mi?
 
-Not: Adim 1-2 makine geneli, bir kez yapilir. Adim 3-4 (indeksleme) **her yeni proje icin**
+Karar:
+- **Ucu de varsa** (araclar + hook + tum pluginler kurulu) → global kurulum mevcut. Adim 1, 2
+  ve 3'u **atla**, dogrudan Adim 4'ten (Serena indeksleme) basla. Kullaniciya "Global kurulum
+  zaten yapilmis, sadece bu projenin indekslemesini yapiyorum" de.
+- **Araclar/hook tamam ama plugin eksikse** → Adim 1 ve 2'yi atla, Adim 3'ten devam et.
+- **Hicbiri yoksa** → Adim 1'den tam kurulum yap.
+
+Not: Adim 1-3 makine geneli, bir kez yapilir. Adim 4-5 (indeksleme) **her yeni proje icin**
 tekrar gereklidir; indeksler proje klasorune yazilir.
 
 ## 1. On kosul kontrolu (global, bir kez)
@@ -85,7 +89,80 @@ rtk hook check "git status"
 Cikti `rtk git status` gosteriyorsa hook calisiyor. `No rewrite for:` gibi bos cikti gelirse
 hook henuz aktif degildir; Desktop'in yeniden baslatilmasi gerektigini hatirlat.
 
-## 3. Serena indeksleme (her proje icin)
+## 3. Marketplace kaydi ve plugin dagitimi (proje basina, git'e commitlenir)
+
+Bu repo'yu klonlamis/gormus olmak pluginleri **calisir hale getirmez** — `context-mode` gibi
+GitHub kaynakli pluginlerin (`sources.json`'da `"kind": "plugin"`) MCP sunucusu ancak Claude
+Code'un kendi kayit dosyasina (`installed_plugins.json`) yazilirsa baslar. Bu dosya bossa
+(`{"plugins": {}}`) MCP tool'lari (`ctx_search`, `ctx_execute`, `ctx_stats`, `ctx_index`) hic
+gorunmez — bilgisayari yeniden baslatmak bunu cozmez, kurulum eksiktir.
+
+`claude plugin marketplace add` + tek tek `claude plugin install` calistirmak **sadece o an
+calistiran kisinin makinesini** kurar; ekipteki digerlerine hicbir sekilde tasinmaz. Bu proje
+bir sirket ici marketplace oldugu icin dogru yontem, kurulumu **proje kokundeki
+`.claude/settings.json` dosyasina yazip git'e commitlemek**tir — Claude Code, bir gelistirici
+projeyi trust ettiginde bu dosyadaki marketplace ve pluginleri otomatik olarak kurmasini
+**onerir** (resmi davranis budur; sessiz/onaysiz kurulum yoktur, tek seferlik bir onay
+istenir).
+
+Bu komutu calistiran plugin'in kendi klasorunde (`${CLAUDE_PLUGIN_ROOT}`, yoksa bu komut
+dosyasinin bulundugu yerin bir ust klasoru olan `marketplace-setup/`) hazir bir sablon var:
+`team-settings.json`. Bu dosya `scripts/build_marketplace.py` tarafindan `sources.json`'dan
+otomatik uretilir; yeni bir plugin eklendiginde elle guncellemene gerek yok, marketplace
+GitHub Actions ile kendini tazeledikce bu dosya da tazelenir.
+
+Proje kokunde `.claude/settings.json` var mi kontrol et (yoksa olustur). `team-settings.json`
+icindeki `extraKnownMarketplaces` ve `enabledPlugins` anahtarlarini oku ve proje
+`.claude/settings.json`'daki **mevcut anahtarlari koruyarak** (kor kopyalama/ustune yazma
+yapma, JSON'u birlestir) ekle:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "ozgur-marketplace": {
+      "source": { "source": "github", "repo": "ozgurerrdem/claude-marketplace" }
+    }
+  },
+  "enabledPlugins": {
+    "vatan-skills@ozgur-marketplace": true,
+    "engineering-standards@ozgur-marketplace": true,
+    "andrej-karpathy-skills@ozgur-marketplace": true,
+    "context-mode@ozgur-marketplace": true,
+    "serena@ozgur-marketplace": true,
+    "context7@ozgur-marketplace": true,
+    "rtk-skills@ozgur-marketplace": true,
+    "marketplace-setup@ozgur-marketplace": true
+  }
+}
+```
+
+Bu dosyayi degistirdikten sonra:
+- `.gitignore`'a bak, `.claude/settings.json` (`.claude/settings.local.json` degil) yanlislikla
+  disarida birakilmis mi kontrol et; birakilmissa cikar. Bu dosya **bilerek** repo'ya
+  commitlenmeli ki ekipteki herkes ayni marketplace/plugin setini alsin.
+- Kullaniciya bildir: "Bu dosyayi commitleyip push ettiginde, projeyi trust eden her
+  gelistiriciye Claude Code bu marketplace ve pluginleri kurmasi icin bir onay istemi
+  gosterecek."
+
+Mevcut oturumda hemen test etmek istersen (opsiyonel, sadece bu makine icin anlik dogrulama):
+
+```
+claude plugin marketplace list
+claude plugin list
+```
+
+`ozgur-marketplace` yoksa `claude plugin marketplace add ozgurerrdem/claude-marketplace`,
+ardindan `claude plugin list`'te gorunmeyen her plugin icin (kuracagini tek satirla soyleyip
+onay alarak) `claude plugin install <ad>@ozgur-marketplace` calistirabilirsin — ama bu sadece
+senin makineni kurar, ekip icin gecerli kalici cozum yukaridaki `.claude/settings.json`'dur.
+
+MCP sunuculari **sadece yeni bir oturumda** yuklenir. Bu adimda hicbir plugin kurulmadiysa
+devam et; en az bir plugin kurulduysa kullaniciya bildir: "Plugin kurulumu tamamlandi,
+degisikliklerin etkili olmasi icin Claude Code oturumunu (Desktop kullaniyorsan tepsi
+ikonundan tamamen kapatip) yeniden baslatman gerekiyor." ve Adim 4-6'yi bir sonraki oturuma
+birak.
+
+## 4. Serena indeksleme (her proje icin)
 
 Kurumsal ag arkasinda `uvx` TLS sertifika hatasi verir; ayrica `serena project index` interaktif
 dil sorusu sorar ve non-interactive modda EOF ile patlar. Ikisini de tek komut cozer.
@@ -102,7 +179,7 @@ React/TypeScript projesi ise `--language typescript` kullan.
 
 Uretilen `.serena/` klasorunu proje kokundeki `.gitignore` dosyasina ekle (yoksa olustur).
 
-## 4. Context-mode indeksleme (her proje icin)
+## 5. Context-mode indeksleme (her proje icin)
 
 **Varsayilan uzanti listesi `.cs` ve `.cshtml` icermez** — belirtmezsen C# projesinde neredeyse
 hicbir sey indekslenmez.
@@ -114,7 +191,7 @@ Haric tut: `bin`, `obj`, `node_modules`, `Logs`, `.git`, `.serena`.
 
 Ardindan `ctx_search` ile bir dogrulama aramasi yap ve isabet edip etmedigini raporla.
 
-## 5. Dogrulama
+## 6. Dogrulama
 
 MCP tool listesini kontrol et:
 
@@ -128,13 +205,14 @@ Serena tool'lari gorunmuyorsa sebebi genellikle TLS'tir; serena pluginin `.mcp.j
 Skill'leri de dogrula: `vatan-dotnet-core`, `vatan-sql`, `vatan-postgres`, `vatan-react-js`,
 `vatan-legacy-dotnet`, `vatan-rtk`.
 
-## 6. Rapor
+## 7. Rapor
 
 ```
 | Bilesen | Durum | Not |
 |---|---|---|
 | git / node / uv / rtk / rg | | surum |
 | RTK hook | | kullanici calistirdi mi, hook check sonucu |
+| marketplace + pluginler | | ozgur-marketplace kayitli mi, hangi pluginler kuruldu |
 | serena | | tool gorunuyor mu, indeks alindi mi |
 | context7 | | tool gorunuyor mu |
 | context-mode | | kac dosya indekslendi |
