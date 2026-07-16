@@ -1,7 +1,10 @@
 {
   "extraKnownMarketplaces": {
     "claude-marketplace": {
-      "source": { "source": "github", "repo": "ozgurerrdem/claude-marketplace" }
+      "source": {
+        "source": "github",
+        "repo": "ozgurerrdem/claude-marketplace"
+      }
     }
   },
   "enabledPlugins": {
