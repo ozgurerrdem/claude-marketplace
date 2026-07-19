@@ -6,6 +6,7 @@
     "description": "Vatan .NET, MSSQL ve PostgreSQL gelistirme standartlari.",
     "author": "Vatan",
     "category": "development",
+    "optional": true,
     "source": "./plugins/vatan-skills"
   },
   {
@@ -16,6 +17,7 @@
     "author": "Ozgur Dagdeviren",
     "category": "development",
     "homepage": "https://github.com/ozgurerrdem/claude-marketplace",
+    "optional": true,
     "source": "./plugins/engineering-standards"
   },
   {
@@ -52,7 +54,7 @@
     "kind": "local",
     "name": "context7",
     "displayName": "Context7",
-    "description": "Kutuphanelerin surume ozel guncel dokumanlarini context'e cekar.",
+    "description": "Kutuphanelerin surume ozel guncel dokumanlarini context'e ceker.",
     "author": "Upstash",
     "category": "development",
     "homepage": "https://github.com/upstash/context7",

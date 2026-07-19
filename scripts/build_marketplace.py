@@ -9,7 +9,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / ".claude-plugin" / "marketplace.json"
 TEAM_SETTINGS_OUT = ROOT / "plugins" / "marketplace-setup" / "team-settings.json"
 
-MARKETPLACE_NAME = "vatan-marketplace"
+MARKETPLACE_NAME = "workbench"
 MARKETPLACE_OWNER = "Ozgur Dagdeviren"
 MARKETPLACE_REPO = "ozgurerrdem/claude-marketplace"
 
@@ -108,9 +108,12 @@ BUILDERS = {
 def main():
     sources = json.loads((ROOT / "sources.json").read_text(encoding="utf-8"))
     plugins = []
+    optional_names = set()
     failed = False
 
     for s in sources:
+        if s.get("optional"):
+            optional_names.add(s["name"])
         builder = BUILDERS.get(s["kind"])
         if builder is None:
             print(f"HATA: bilinmeyen kind '{s['kind']}' ({s['name']})", file=sys.stderr)
@@ -142,6 +145,8 @@ def main():
     # marketplace-setup plugin'inin kendi klasorunde tutulur ki plugin kurulunca
     # bu dosya da ekip uyeleriyle birlikte dagilsin (repo kokundeki dosyalar
     # yerel kind="plugin" pluginlerle birlikte kopyalanmaz).
+    # `optional: true` olan pluginler marketplace'te listelenir ama sablonda
+    # etkinlestirilmez; ortama gore elle acilir (ornegin kuruma ozel skill setleri).
     team_settings = {
         "extraKnownMarketplaces": {
             MARKETPLACE_NAME: {
@@ -149,7 +154,9 @@ def main():
             }
         },
         "enabledPlugins": {
-            f"{p['name']}@{MARKETPLACE_NAME}": True for p in plugins
+            f"{p['name']}@{MARKETPLACE_NAME}": True
+            for p in plugins
+            if p["name"] not in optional_names
         },
     }
     TEAM_SETTINGS_OUT.parent.mkdir(parents=True, exist_ok=True)

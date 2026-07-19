@@ -119,21 +119,29 @@ yapma, JSON'u birlestir) ekle:
 ```json
 {
   "extraKnownMarketplaces": {
-    "vatan-marketplace": {
+    "workbench": {
       "source": { "source": "github", "repo": "ozgurerrdem/claude-marketplace" }
     }
   },
   "enabledPlugins": {
-    "vatan-skills@vatan-marketplace": true,
-    "engineering-standards@vatan-marketplace": true,
-    "andrej-karpathy-skills@vatan-marketplace": true,
-    "context-mode@vatan-marketplace": true,
-    "serena@vatan-marketplace": true,
-    "context7@vatan-marketplace": true,
-    "marketplace-setup@vatan-marketplace": true
+    "andrej-karpathy-skills@workbench": true,
+    "context-mode@workbench": true,
+    "serena@workbench": true,
+    "context7@workbench": true,
+    "marketplace-setup@workbench": true
   }
 }
 ```
+
+**Standart seti secimi (zorunlu adim).** Yukaridaki sablon bilerek hicbir standart seti
+acmaz — `vatan-skills` ve `engineering-standards` birbirinin alternatifidir ve ortama gore
+secilir. Kullaniciya sor:
+
+- Kurumsal Vatan ortami          -> `"vatan-skills@workbench": true` ekle
+- Kisisel / vendor-neutral ortam -> `"engineering-standards@workbench": true` ekle
+
+Ikisini birden acma; ayni konularda cakisan skill'ler uretirler. Kullanici secim yapmazsa
+`engineering-standards`'i varsayilan al ve bunu tek satirla bildir.
 
 Bu dosyayi degistirdikten sonra:
 - `.gitignore`'a bak, `.claude/settings.json` (`.claude/settings.local.json` degil) yanlislikla
@@ -150,9 +158,9 @@ claude plugin marketplace list
 claude plugin list
 ```
 
-`vatan-marketplace` yoksa `claude plugin marketplace add ozgurerrdem/claude-marketplace`,
+`workbench` yoksa `claude plugin marketplace add ozgurerrdem/claude-marketplace`,
 ardindan `claude plugin list`'te gorunmeyen her plugin icin (kuracagini tek satirla soyleyip
-onay alarak) `claude plugin install <ad>@vatan-marketplace` calistirabilirsin — ama bu sadece
+onay alarak) `claude plugin install <ad>@workbench` calistirabilirsin — ama bu sadece
 senin makineni kurar, ekip icin gecerli kalici cozum yukaridaki `.claude/settings.json`'dur.
 
 MCP sunuculari **sadece yeni bir oturumda** yuklenir. Bu adimda hicbir plugin kurulmadiysa
@@ -201,8 +209,14 @@ MCP tool listesini kontrol et:
 Serena tool'lari gorunmuyorsa sebebi genellikle TLS'tir; serena pluginin `.mcp.json` dosyasinda
 `UV_NATIVE_TLS=1` ortam degiskeni var mi kontrol et.
 
-Skill'leri de dogrula: `vatan-dotnet-core`, `vatan-sql`, `vatan-postgres`, `vatan-react-js`,
-`vatan-legacy-dotnet`, `vatan-rtk`.
+Skill'leri de dogrula — hangi standart setinin secildigine gore:
+
+- `vatan-skills` secildiyse: `vatan-dotnet-core`, `vatan-sql`, `vatan-postgres`,
+  `vatan-react-js`, `vatan-legacy-dotnet`, `vatan-rtk`
+- `engineering-standards` secildiyse: `dotnet-core`, `mssql`, `postgresql`, `react`,
+  `legacy-dotnet`
+
+Secilmeyen setin skill'lerini arama; yoklugu hata degildir.
 
 ## 7. Rapor
 
@@ -211,11 +225,11 @@ Skill'leri de dogrula: `vatan-dotnet-core`, `vatan-sql`, `vatan-postgres`, `vata
 |---|---|---|
 | git / node / uv / rtk / rg | | surum |
 | RTK hook | | kullanici calistirdi mi, hook check sonucu |
-| marketplace + pluginler | | vatan-marketplace kayitli mi, hangi pluginler kuruldu |
+| marketplace + pluginler | | workbench kayitli mi, hangi pluginler kuruldu |
 | serena | | tool gorunuyor mu, indeks alindi mi |
 | context7 | | tool gorunuyor mu |
 | context-mode | | kac dosya indekslendi |
-| vatan-skills | | kac skill yuklu |
+| standart seti | | hangisi secildi (vatan-skills / engineering-standards), kac skill yuklu |
 ```
 
 Sonunda kullaniciya net, tek cumlelik bir sonraki adim ver. Kalan manuel is genellikle sudur:

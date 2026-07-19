@@ -1,5 +1,5 @@
 {
-  "name": "vatan-marketplace",
+  "name": "workbench",
   "owner": {
     "name": "Ozgur Dagdeviren"
   },
@@ -70,7 +70,7 @@
     {
       "name": "context7",
       "displayName": "Context7",
-      "description": "Kutuphanelerin surume ozel guncel dokumanlarini context'e cekar.",
+      "description": "Kutuphanelerin surume ozel guncel dokumanlarini context'e ceker.",
       "author": {
         "name": "Upstash"
       },

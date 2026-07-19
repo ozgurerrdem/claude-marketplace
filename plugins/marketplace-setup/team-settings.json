@@ -1,6 +1,6 @@
 {
   "extraKnownMarketplaces": {
-    "vatan-marketplace": {
+    "workbench": {
       "source": {
         "source": "github",
         "repo": "ozgurerrdem/claude-marketplace"
@@ -8,12 +8,10 @@
     }
   },
   "enabledPlugins": {
-    "vatan-skills@vatan-marketplace": true,
-    "engineering-standards@vatan-marketplace": true,
-    "andrej-karpathy-skills@vatan-marketplace": true,
-    "context-mode@vatan-marketplace": true,
-    "serena@vatan-marketplace": true,
-    "context7@vatan-marketplace": true,
-    "marketplace-setup@vatan-marketplace": true
+    "andrej-karpathy-skills@workbench": true,
+    "context-mode@workbench": true,
+    "serena@workbench": true,
+    "context7@workbench": true,
+    "marketplace-setup@workbench": true
   }
 }
